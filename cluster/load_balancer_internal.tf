@@ -60,4 +60,8 @@ resource "aws_lb_listener" "internal" {
       status_code  = "200"
     }
   }
+
+  lifecycle {
+    prevent_destroy = false
+  }
 }

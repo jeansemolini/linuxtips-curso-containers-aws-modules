@@ -15,14 +15,14 @@ output "lb_external_arn" {
 }
 
 output "lb_external_listener" {
- value       = aws_lb_listener.main.arn
+  value       = aws_lb_listener.main.arn
 }
 
 output "lb_internal_arn" {
- value       = aws_lb.internal.arn
+  value       = aws_lb.internal.arn
 }
 
-output "lb_external_arn" {
+output "lb_internal_listener" {
   value       = aws_lb_listener.internal.arn
 }
 

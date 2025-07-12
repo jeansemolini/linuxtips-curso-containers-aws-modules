@@ -11,18 +11,16 @@ variable "region" {
 }
 
 variable "vpc_id" {
-  description = "ID da VPC."
-  type        = string
-}
-
-variable "public_subnets" {
-  description = "Lista de subnets públicas na VPC."
-  type        = list(string)
+  description = "ID da VPC"
+  type = string
 }
 
 variable "private_subnets" {
-  description = "Lista de subnets privadas na VPC."
-  type        = list(string)
+  type = list(string)
+}
+
+variable "public_subnets" {
+  type = list(string)
 }
 
 #### ECS General ######
