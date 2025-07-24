@@ -65,3 +65,26 @@ resource "aws_lb_listener" "internal" {
     prevent_destroy = false
   }
 }
+
+resource "aws_lb_listener" "internal_443" {
+
+  count = length(var.acm_certs) > 0 ? 1 : 0
+
+  certificate_arn = var.acm_certs[0]
+
+  load_balancer_arn = aws_lb.internal.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  default_action {
+    type = "fixed-response"
+    fixed_response {
+      content_type = "text/plain"
+      message_body = format("LinuxTips Internal HTTPS - %s", var.region)
+      status_code  = "200"
+    }
+  }
+
+  lifecycle {
+    prevent_destroy = false
+  }
+}
